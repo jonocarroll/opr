@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/jonocarroll/opr/master/tools/1password_logo.png">
+<img src="https://raw.githubusercontent.com/jonocarroll/opr/master/tools/1password_logo.png" height="100" width="100">
 
 # opr
 
