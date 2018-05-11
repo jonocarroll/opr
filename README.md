@@ -1,6 +1,8 @@
+<img src="https://raw.githubusercontent.com/jonocarroll/opr/master/tools/1password_logo.svg">
+
 # opr
 
-Interface with the 1Password CLI tool `op`.
+Interface with the [1Password](https://1password.com/) CLI tool `op`.
 
 1Password is yet to provide a native Linux client. 1PasswordX (a Chrome plugin) works well, but requires you to launch 
 chrome if you simply want to extract a password (say, for using another program). They do however provide a CLI tool 
