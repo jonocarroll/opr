@@ -1,5 +1,5 @@
-Package: opr
 Type: Package
+Package: opr
 Title: Interact with the 1Password CLI tool 'op'
 Version: 0.1.0
 Authors@R: person("Jonathan", "Carroll", 
@@ -9,13 +9,13 @@ Authors@R: person("Jonathan", "Carroll",
 Maintainer: Jonathan Carroll <rpkg@jcarroll.com.au>
 Description: Query and retrieve 1Password usernames and passwords
     via the CLI tool 'op'.
-Depends:
-    R (>= 3.3.0)
 License: GPL (>=3)
+Depends: 
+    R (>= 3.3.0)
+Imports: 
+    getPass (>= 0.2.2),
+    htmltools (>= 0.3.6),
+    jsonlite (>= 1.5)
 Encoding: UTF-8
 LazyData: true
-Imports: 
-    getPass,
-    htmltools,
-    jsonlite
 RoxygenNote: 6.0.1
