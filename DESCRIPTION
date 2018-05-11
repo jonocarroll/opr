@@ -15,7 +15,8 @@ Depends:
 Imports: 
     getPass (>= 0.2.2),
     htmltools (>= 0.3.6),
-    jsonlite (>= 1.5)
+    jsonlite (>= 1.5),
+    stats
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

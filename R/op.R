@@ -33,7 +33,7 @@ setup_op <- function(URL = "my.1password.com",
   options("OP_SUBDOMAIN" = subdomain)
 
   ## set the environment variable to the returned login token
-  do.call(Sys.setenv, setNames(list(signin_ret), paste0("OP_SESSION_", subdomain)))
+  do.call(Sys.setenv, stats::setNames(list(signin_ret), paste0("OP_SESSION_", subdomain)))
 
   message(paste0("Signin token saved to environment variable OP_SESSION_", subdomain))
   message("This function does not need to be run again. You can now use `signin()`")
@@ -96,7 +96,7 @@ signin <- function(subdomain = "my") {
   options("OP_SUBDOMAIN" = subdomain)
 
   ## set the environment variable to the returned login token
-  do.call(Sys.setenv, setNames(list(signin_ret), paste0("OP_SESSION_", subdomain)))
+  do.call(Sys.setenv, stats::setNames(list(signin_ret), paste0("OP_SESSION_", subdomain)))
   message(paste0("Signin token saved to environment variable OP_SESSION_", subdomain))
 
   ## return the token invisibly.
