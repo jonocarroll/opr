@@ -27,6 +27,6 @@ need to sign in.
 The session token is not the actual hash, but merely a reference to an
 encrypted token in the user's home directory (in e.g. \code{~/.op/config}).
 
-This sets an environment variable \code{OP_SESSION_my} (using the default \code{my}
-subdomain \code{my}, though this is arbitrary).
+This sets an environment variable \code{OP_SESSION_X} (where \code{X} is the subdomain)
+and an \link{option} \code{OP_SUBDOMAIN}.
 }

@@ -1,3 +1,14 @@
+get_token_name <- function() {
+
+  subdomain <- getOption("OP_SUBDOMAIN")
+  if (is.null(subdomain)) subdomain <- "my"
+
+  paste0("OP_SESSION_", subdomain)
+
+}
+
+
+
 setup_op <- function(URL = "my.1password.com",
                      email = NULL,
                      secret_key = NULL) {
@@ -32,12 +43,14 @@ setup_op <- function(URL = "my.1password.com",
   stopifnot(nchar(signin_ret) == 43 && !grepl(" ", signin_ret))
 
   message(paste0("Signin successful. Your subdomain is ", subdomain))
+  options("OP_SUBDOMAIN" = subdomain)
 
   ## set the environment variable to the returned login token
-  Sys.setenv("OP_SESSION_my" = signin_ret)
+  do.call(Sys.setenv, setNames(list(signin_ret), paste0("OP_SESSION_", subdomain)))
 
-  message("Signin token saved to environment variable OP_SESSION_my")
+  message(paste0("Signin token saved to environment variable OP_SESSION_", subdomain))
   message("This function does not need to be run again. You can now use `signin()`")
+  message("This session will be valid for 30 minutes")
 
   ## return the token invisibly.
   ## this is not the actual login and
@@ -85,8 +98,8 @@ check_has_op <- function(version = "0.4") {
 #'   The session token is not the actual hash, but merely a reference to an
 #'   encrypted token in the user's home directory (in e.g. `~/.op/config`).
 #'
-#'   This sets an environment variable `OP_SESSION_my` (using the default `my`
-#'   subdomain `my`, though this is arbitrary).
+#'   This sets an environment variable `OP_SESSION_X` (where `X` is the subdomain)
+#'   and an [option] `OP_SUBDOMAIN`.
 #'
 #' @return if successful, the login token, invisibly.
 #' @export
@@ -111,8 +124,13 @@ signin <- function(subdomain = "my") {
   ## login_ret should have 43 characters and no spaces
   stopifnot(nchar(login_ret) == 43 && !grepl(" ", login_ret))
 
+  message(paste0("Signin successful. Your subdomain is ", subdomain))
+  message("This session will be valid for 30 minutes")
+  options("OP_SUBDOMAIN" = subdomain)
+
   ## set the environment variable to the returned login token
-  Sys.setenv("OP_SESSION_my" = login_ret)
+  do.call(Sys.setenv, setNames(list(signin_ret), paste0("OP_SESSION_", subdomain)))
+  message(paste0("Signin token saved to environment variable OP_SESSION_", subdomain))
 
   ## return the token invisibly.
   ## this is not the actual login and
@@ -122,6 +140,10 @@ signin <- function(subdomain = "my") {
 }
 
 signout <- function() {
+
+  suppressWarnings(
+    system("op signout", intern = FALSE, wait = FALSE)
+  )
 
 }
 
@@ -139,7 +161,7 @@ list_items <- function() {
     system(
       paste0(
         "echo ",
-        Sys.getenv("OP_SESSION_my"),
+        Sys.getenv(get_token_name()),
         "| op list items"
       ),
       intern = TRUE
@@ -232,7 +254,7 @@ get_item <- function(name) {
     system(
       paste0(
         "echo ",
-        Sys.getenv("OP_SESSION_my"),
+        Sys.getenv(get_token_name()),
         "| op get item \"", name, "\""
       ),
       intern = TRUE
