@@ -45,7 +45,7 @@ The first time you use `op` you need to provide three pieces of information:
 You will be prompted for your [Master Password](https://support.1password.com/forgot-master-password/) 
 in a `getPass` masked password entry box. 
 
-<img src="getpass.png">
+<img src="https://raw.githubusercontent.com/jonocarroll/opr/master/tools/getpass.png">
 
 This is at no point stored, even in a temporary variable.
 
@@ -84,7 +84,7 @@ For security, the password is not output, rather it is displayed in a HTML panel
 username and password can be copied. For added security, the password is not visible until the mouse pointer is 
 hovering over it.
 
-<img src="password.png" border="5">
+<img src="https://raw.githubusercontent.com/jonocarroll/opr/master/tools/password.png" border="5">
 
 Once you are finished with your session, you can sign out with
 
