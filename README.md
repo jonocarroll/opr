@@ -5,12 +5,12 @@
 Interface with the [1Password](https://1password.com/) CLI tool `op`.
 
 1Password is yet to provide a native Linux client. 1PasswordX (a Chrome plugin) works well, but requires you to launch 
-chrome if you simply want to extract a password (say, for using another program). They do however provide a CLI tool 
+Chrome if you simply want to extract a password (say, for using another program). They do however provide a CLI tool 
 (not an API) in the form of `op`.
 
 ## Installation
 
-You can install the development version of `opr` from [GitHub] with:
+You can install the development version of `opr` from [GitHub](https://github.com/jonocarroll/opr) with:
 
 ``` r
 remotes::install_github("jonocarroll/opr")
@@ -22,11 +22,23 @@ or
 devtools::install_github("jonocarroll/opr")
 ```
 
+## Security
+
+First, a note on security. I am not a security/infosec expert. If there are any aspects of this software you 
+find to be questionable please bring them to my attention immediately and I will work to rectify the issue.
+
+This software makes no attempt to store or make externally available your session info or any other info. 
+
+No bamboozles are intended. If you think something might accidentally do that, I will work to fix it.
+
 ## Dependency
 
 `opr` depends on the 1Password CLI tool (available for most platforms), `op`. You can download it here: https://app-updates.agilebits.com/product_history/CLI 
 
 Once `op` is installed you can use this package to communicate with 1Password using `R`.
+
+**Please verify that the `op` software you download is genuine. This package merely communicates with 
+whichever executible the system provdes as `op`. No warranty is provided whatsoever.**
 
 ## Example Usage
 
