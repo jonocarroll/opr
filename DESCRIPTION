@@ -1,15 +1,21 @@
 Package: opr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Interact with the 1Password CLI tool 'op'
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Authors@R: person("Jonathan", "Carroll", 
+ email = "rpkg@jcarroll.com.au", 
+ role = c("aut", "cre"), 
+ comment = c(ORCID = "0000-0002-1404-5264"))
+Maintainer: Jonathan Carroll <rpkg@jcarroll.com.au>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Depends:
+    R (>= 3.3.0)
+License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
 Imports: 
     getPass,
     htmltools,
     jsonlite
+RoxygenNote: 6.0.1
