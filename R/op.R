@@ -1,3 +1,28 @@
+#' Attempt to signin to 1Password for the first time.
+#'
+#' This function is only required once, after which point a new folder will be
+#' created by `op` in the user's home directory, storing the session tokens. See
+#' Details.
+#'
+#' @md
+#' @param URL domain used to signin to 1Password, e.g. `my.1password.com`
+#' @param email your login email
+#' @param secret_key your Secret Key
+#'
+#' @details Requests the 1Password Master Password. At no point is this saved to
+#'   even a temporary variable. This is only required for signin, after which a
+#'   session token will be used to communicate with 1Password. The session token
+#'   is validated on the server and lasts 30 minutes, after which you will again
+#'   need to sign in.
+#'
+#'   The session token is not the actual hash, but merely a reference to an
+#'   encrypted token in the user's home directory (in e.g. `~/.op/config`).
+#'
+#'   This sets an environment variable `OP_SESSION_X` (where `X` is the subdomain)
+#'   and an [option] `OP_SUBDOMAIN`.
+#'
+#' @return if successful, the login token, invisibly.
+#' @export
 setup_op <- function(URL = "my.1password.com",
                      email = NULL,
                      secret_key = NULL) {
@@ -46,8 +71,6 @@ setup_op <- function(URL = "my.1password.com",
   return(invisible(signin_ret))
 
 }
-
-
 
 #' Attempt to sign in to an authenticated op session
 #'
@@ -106,6 +129,9 @@ signin <- function(subdomain = "my") {
   return(invisible(signin_ret))
 }
 
+
+#' Attempt to sign out of an authenticated 1Password session
+#' @export
 signout <- function() {
 
   suppressWarnings(

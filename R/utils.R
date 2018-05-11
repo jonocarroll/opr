@@ -20,6 +20,14 @@ check_has_op <- function(version = "0.4") {
   return(invisible(NULL))
 }
 
+#' Retrieve the environment variable name
+#'
+#' Idenfities the current environment variable name by
+#' inspecting `getOption("OP_SUBDOMAIN")` which is set on
+#' signin.
+#'
+#' @md
+#' @export
 get_token_name <- function() {
 
   subdomain <- getOption("OP_SUBDOMAIN")

@@ -3,5 +3,8 @@
 export(check_has_op)
 export(find_item)
 export(get_item)
+export(get_token_name)
 export(list_items)
+export(setup_op)
 export(signin)
+export(signout)
