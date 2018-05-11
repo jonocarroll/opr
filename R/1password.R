@@ -110,7 +110,7 @@ signin <- function(subdomain = "my") {
 
   ## attempt to login, asking for master password
   ## this is not saved to even a temporary variable
-  login_ret <- suppressWarnings(
+  signin_ret <- suppressWarnings(
     system(
       paste0(
         "echo ",
@@ -122,7 +122,7 @@ signin <- function(subdomain = "my") {
   )
 
   ## login_ret should have 43 characters and no spaces
-  stopifnot(nchar(login_ret) == 43 && !grepl(" ", login_ret))
+  stopifnot(nchar(signin_ret) == 43 && !grepl(" ", signin_ret))
 
   message(paste0("Signin successful. Your subdomain is ", subdomain))
   message("This session will be valid for 30 minutes")
@@ -136,7 +136,7 @@ signin <- function(subdomain = "my") {
   ## this is not the actual login and
   ## is ephemeral anyway. it will be
   ## invalid in 30 minutes
-  return(invisible(login_ret))
+  return(invisible(signin_ret))
 }
 
 signout <- function() {
