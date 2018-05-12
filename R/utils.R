@@ -56,7 +56,7 @@ get_token_name <- function() {
 #' @noRd
 #' @keywords internal
 show_password <- function(account, username, password) {
-  htmltools::html_print(
+  page <- htmltools::html_print(
     htmltools::HTML(paste0(
       '
 <style>
@@ -75,5 +75,11 @@ password,
 "    </div>\n</div>"
     ))
   )
+
+  todo("Press Enter when done with password...")
+  done <- readline("")
+
+  on.exit(unlink(page))
+
   return(invisible(NULL))
 }
