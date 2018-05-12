@@ -9,6 +9,14 @@
 Query and retrieve 1Password usernames and passwords
 via the CLI tool 'op'.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/jonocarroll/opr}
+  \item Report bugs at \url{https://github.com/jonocarroll/opr/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Jonathan Carroll \email{rpkg@jcarroll.com.au} (0000-0002-1404-5264)
 
