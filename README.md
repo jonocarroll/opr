@@ -6,7 +6,11 @@ Interface with the [1Password](https://1password.com/) CLI tool `op`.
 
 1Password is yet to provide a native Linux client. 1PasswordX (a Chrome plugin) works well, but requires you to launch 
 Chrome if you simply want to extract a password (say, for using another program). They do however provide a CLI tool 
-(not an API) in the form of `op`.
+(not an API) in the form of `op`. Using it however, may be best left to advanced users since it returns nested JSON
+
+```
+op get item WestJet | jq '.details.fields[] | select(.designation=="password").value'
+```
 
 ## Installation
 
